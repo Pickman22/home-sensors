@@ -2,7 +2,7 @@
 #define DBG_H
 
 #if defined(__INFO__) || defined(__DBG__) || defined(__WARN__) || defined(__ERR__)
-#define DBG_INIT() Serial.begin(DBG_BAUD_RATE)
+#define DBG_INIT() do { Serial.begin(DBG_BAUD_RATE); Serial.println("\n\r\n\r"); } while(0);
 #else
 #define DBG_INIT()
 #endif
