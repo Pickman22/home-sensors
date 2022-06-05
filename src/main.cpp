@@ -61,7 +61,8 @@ void tsk_conn_man_fcn(void) {
           break;
 
         case WL_CONNECTED:
-          DBG_INFO("Connected.");
+          DBG_INFO("Connected. IP: %s, RSSI: %ddBm.",
+              WiFi.localIP().toString().c_str(), WiFi.RSSI());
           WiFi.setAutoReconnect(true);
           _conn_state = Connected;
           break;
@@ -112,7 +113,7 @@ void tsk_conn_man_fcn(void) {
     case Die:
       DBG_ERR("RIP...");
       digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
-      DBG_DEBUG("WiFi status: %d", WiFi.status());
+      DBG_DEBUG("WiFi status: %d.", WiFi.status());
       break;
   }
 }
